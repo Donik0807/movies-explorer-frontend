@@ -1,0 +1,78 @@
+.movie__image {
+  margin-bottom: 5px;
+  width: 100%;
+  overflow: hidden;
+}
+
+@media screen and (max-width: 1279px) {
+  .movie__image {
+    margin-bottom: 10px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .movie__image {
+    margin-bottom: 5px;
+  }
+}
+
+.movie__container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  min-height: 49px;
+  border-bottom: 1px solid #424242;
+  margin-bottom: 3px;
+}
+
+.movie__title {
+  color: #fff;
+  font-family: Inter, sans-serif;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  margin: 4px 0 0;
+  max-width: 225px;
+}
+
+@media screen and (max-width: 767px) {
+  .movie__title {
+    font-size: 12px;
+  }
+}
+
+.movie__btn {
+  width: 24px;
+  height: 24px;
+  border: none;
+  padding: 0;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.movie__btn_type_save {
+  background-image: url(../../images/save2.svg);
+}
+
+.movie__btn_type_delete {
+  background-image: url(../../images/delete.svg);
+  visibility: hidden;
+}
+
+.movie_saved-list:hover .movie__btn_type_delete {
+  visibility: visible;
+}
+
+.movie__btn_active {
+  background-image: url(../../images/save1.svg);
+}
+
+.movie__duration {
+  color: #8b8b8b;
+  font-family: Inter, sans-serif;
+  font-size: 11px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}

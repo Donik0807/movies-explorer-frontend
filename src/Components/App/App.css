@@ -1,0 +1,25 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.content {
+  flex: 1 0 auto;
+}
+
+.link-animation {
+  transition: opacity .3s linear;
+}
+
+.link-animation:hover {
+  opacity: 0.699999988079071;
+}
+
+.button-animation {
+  transition: opacity .3s linear;
+}
+
+.button-animation:hover {
+  opacity: 0.800000011920929;
+}
