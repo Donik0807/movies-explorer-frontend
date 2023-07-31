@@ -1,0 +1,185 @@
+.about {
+  padding: 0 70px;
+  margin-bottom: 110px;
+}
+
+@media screen and (max-width: 1279px) {
+  .about {
+    padding: 0 50px;
+    margin-bottom: 90px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .about {
+    padding: 0 18px;
+    margin-bottom: 70px;
+  }
+}
+
+.about__title {
+  margin: 0 0 70px;
+}
+
+@media screen and (max-width: 767px) {
+  .about__title {
+    margin: 0 0 61px;
+  }
+}
+
+.about__project-info {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 112px;
+}
+
+@media screen and (max-width: 1279px) {
+  .about__project-info {
+    gap: 34px;
+    margin-bottom: 94px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .about__project-info {
+    flex-direction: column;
+    gap: 59px;
+    margin-bottom: 60px;
+  }
+}
+
+.about__info-container {
+  max-width: 550px;
+}
+
+.about__text {
+  color: #fff;
+  font-family: Inter, sans-serif;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.8px;
+  margin: 0 0 26px;
+}
+
+@media screen and (max-width: 1279px) {
+  .about__text {
+    margin-bottom: 23px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .about__text {
+    font-size: 18px;
+    letter-spacing: -0.72px;
+    margin-bottom: 16px;
+  }
+}
+
+.about__description {
+  color: #fff;
+  font-family: Inter, sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+  margin: 0;
+}
+
+@media screen and (max-width: 1279px) {
+  .about__description {
+    font-size: 12px;
+    line-height: 18px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .about__description {
+    font-size: 11px;
+    line-height: 16px;
+  }
+}
+
+.progress-container-1 {
+  display: inline-block;
+  width: 20%;
+}
+
+@media screen and (max-width: 1279px) {
+  .progress-container-1 {
+    width: 21%;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .progress-container-1 {
+    width: 35%;
+  }
+}
+
+.progress-container-2 {
+  display: inline-block;
+  width: 80%;
+}
+
+@media screen and (max-width: 1279px) {
+  .progress-container-2 {
+    width: 79%;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .progress-container-2 {
+    width: 65%;
+  }
+}
+
+.progress-line {
+  padding: 9px 0;
+  text-align: center;
+  box-sizing: border-box;
+  font-family: Inter, sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+@media screen and (max-width: 767px) {
+  .progress-line {
+    font-size: 11px;
+    padding: 11px 0;
+  }
+}
+
+.about__proggress-1 {
+  background-color: #3ddc84;
+  color: #000;
+}
+
+.about__proggress-2 {
+  background-color: #303030;
+  color: #fff;
+}
+
+.about__progress-text {
+  margin-top: 14px;
+  display: block;
+  color: #8b8b8b;
+  text-align: center;
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 17px;
+}
+
+@media screen and (max-width: 767px) {
+  .about__progress-text {
+    font-size: 11px;
+    font-weight: 400;
+    line-height: normal;
+    margin-top: 7px;
+  }
+}

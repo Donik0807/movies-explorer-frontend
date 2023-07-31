@@ -1,0 +1,254 @@
+.header__navigation {
+  /* display: flex;
+  align-items: center; */
+}
+
+@media screen and (max-width: 1279px) {
+  .header__navigation_burger {
+    display: none;
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.3);
+    width: 100vw;
+    height: 100vh;
+    z-index: 50;
+    top: 0;
+    left: 0;
+    transition: transform 0.3s linear;
+  }
+}
+
+.header__navigation_open {
+  display: block;
+}
+
+.header__navigation-list {
+  display: flex;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+}
+
+@media screen and (max-width: 1279px) {
+  .header__navigation-list_burger {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 68%;
+    height: 100%;
+    background-color: #202020;
+    display: block;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .header__navigation-list_burger {
+    width: 100%;
+  }
+}
+
+.header__navigation-item {
+  list-style: none;
+  text-align: center;
+}
+
+.link {
+  display: inline-block;
+  font-family: Inter, sans-serif;
+  font-style: normal;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 16px;
+  text-decoration: none;
+  text-align: center;
+}
+
+@media screen and (max-width: 767px) {
+  .link {
+    font-size: 10px;
+    font-weight: 500;
+    line-height: 16px;
+  }
+}
+
+.link.active {
+  font-weight: 500;
+}
+
+@media screen and (max-width: 1279px) {
+  .link.active {
+    padding-bottom: 4px;
+    border-bottom: 2px solid #ffffff;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .link.active {
+    padding-bottom: 8px;
+  }
+}
+
+.header__register-link {
+  color: #fff;
+  font-family: Inter, sans-serif;
+  vertical-align: middle;
+}
+
+.header__login-link {
+  display: inline-block;
+  width: 76px;
+  height: 32px;
+  border-radius: 3px;
+  background: #3ddc84;
+  color: #000;
+  margin-left: 30px;
+  text-align: center;
+  padding: 8px;
+  box-sizing: border-box;
+}
+
+@media screen and (max-width: 767px) {
+  .header__login-link {
+    width: 54px;
+    height: 26px;
+    margin-left: 14px;
+    padding: 5px;
+  }
+}
+
+.header__profile-link {
+  display: block;
+  color: #fff;
+  width: 100px;
+  height: 32px;
+  border-radius: 20px;
+  background: #313131;
+  padding: 8px;
+  box-sizing: border-box;
+  font-size: 14px;
+  margin-left: 50px;
+  text-align: center;
+}
+
+@media screen and (max-width: 1279px) {
+  .header__profile-link {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 16px;
+    position: absolute;
+    bottom: 90px;
+    left: 50%;
+    transform: translateX(-100%);
+  }
+}
+
+@media screen and (max-width: 1279px) {
+  .header__profile-link {
+    bottom: 46px;
+  }
+}
+
+.header__saved-films {
+  color: #fff;
+  font-size: 14px;
+  line-height: 18px;
+  margin-left: 20px;
+}
+
+@media screen and (max-width: 1279px) {
+  .header__saved-films {
+    font-size: 18px;
+    font-weight: 500;
+    margin: 0;
+  }
+}
+
+.header__films-link {
+  color: #fff;
+  font-size: 14px;
+  line-height: 18px;
+}
+
+@media screen and (max-width: 1279px) {
+  .header__films-link {
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 25px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .header__films-link {
+    margin-bottom: 18px;
+  }
+}
+
+.header__toggle-btn {
+  width: 44px;
+  height: 38px;
+  background-image: url(../../images/burger.svg);
+  display: none;
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  z-index: 51;
+}
+
+@media screen and (max-width: 1279px) {
+  .header__toggle-btn {
+    display: block;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .header__toggle-btn {
+    width: 40px;
+  }
+}
+
+.header__toggle-btn_open {
+  width: 30px;
+  height: 30px;
+  background-image: url(../../images/close.svg);
+  position: fixed;
+  right: 23px;
+  top: 23px;
+}
+
+@media screen and (max-width: 767px) {
+  .header__toggle-btn_open {
+    width: 30px;
+    height: 30px;
+    right: 14px;
+    top: 14px;
+  }
+}
+
+.header__main-link {
+  display: none;
+  color: #fff;
+  text-align: center;
+  font-family: Inter, sans-serif;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  margin: 159px 0 33px;
+}
+
+@media screen and (max-width: 1279px) {
+  .header__main-link {
+    display: inline-block;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .header__main-link {
+    display: inline-block;
+    margin: 144px 0 28px;
+  }
+}

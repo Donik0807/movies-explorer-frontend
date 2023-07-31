@@ -1,0 +1,250 @@
+.about-me {
+  padding: 0 70px 85px;
+}
+
+@media screen and (max-width: 1279px) {
+  .about-me {
+    padding: 0 50px 50px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .about-me {
+    padding: 0 14px 30px;
+  }
+}
+
+.about-me__title {
+  margin-bottom: 66px;
+}
+
+@media screen and (max-width: 767px) {
+  .about-me__title {
+    margin-bottom: 60px;
+  }
+}
+
+.about-me__info-container {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 101px;
+}
+
+@media screen and (max-width: 1279px) {
+  .about-me__info-container {
+    margin-bottom: 90px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .about-me__info-container {
+    flex-direction: column;
+    margin-bottom: 70px;
+  }
+}
+
+.about-me__text-info {
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.about-me__subtitle {
+  margin: 0 0 18px;
+  color: #fff;
+  font-family: Inter, sans-serif;
+  font-size: 50px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 58px;
+  letter-spacing: -2px;
+}
+
+@media screen and (max-width: 1279px) {
+  .about-me__subtitle {
+    font-size: 40px;
+    line-height: 40px;
+    letter-spacing: -1.6px;
+    margin-bottom: 15px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .about-me__subtitle {
+    font-size: 30px;
+    line-height: normal;
+    letter-spacing: -1.2px;
+    margin-bottom: 19px;
+  }
+}
+
+.about-me__text {
+  color: #fff;
+  font-family: Inter, sans-serif;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px;
+  margin: 0 0 26px;
+}
+
+@media screen and (max-width: 1279px) {
+  .about-me__text {
+    font-size: 12px;
+    line-height: 18px;
+    margin-bottom: 20px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .about-me__text {
+    font-size: 11px;
+    line-height: 16px;
+  }
+}
+
+.about-me__description {
+  color: #fff;
+  font-family: Inter, sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 22px;
+  margin: 0;
+}
+
+@media screen and (max-width: 1279px) {
+  .about-me__description {
+    font-size: 12px;
+    line-height: 18px;
+    max-width: 363px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .about-me__description {
+    font-size: 11px;
+    line-height: 16px;
+  }
+}
+
+.about-me__github-link {
+  display: block;
+  color: #fff;
+  font-family: Inter, sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 767px) {
+  .about-me__github-link {
+    margin-top: 40px;
+  }
+}
+
+.about-me__me {
+  border-radius: 10px;
+  max-width: 270px;
+}
+
+@media screen and (max-width: 1279px) {
+  .about-me__me {
+    max-width: 255px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .about-me__me {
+    max-width: unset;
+    order: -1;
+    margin-bottom: 40px;
+  }
+}
+
+.about-me__portfolio-text {
+  color: #8b8b8b;
+  font-family: Inter, sans-serif;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+  margin: 0 0 49px;
+}
+
+@media screen and (max-width: 767px) {
+  .about-me__portfolio-text {
+    font-size: 14px;
+    line-height: 20px;
+    margin-bottom: 40px;
+  }
+}
+
+.about-me__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.about-me__portfolio-item {
+  padding-bottom: 19px;
+  border-bottom: 1px solid #424242;
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.about-me__portfolio-item::after {
+  width: 18px;
+  height: 17px;
+  content: '';
+  background-image: url('../../images/arrow.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  position: absolute;
+  right: 6px;
+  top: 20px;
+}
+
+@media screen and (max-width: 767px) {
+  .about-me__portfolio-item::after{
+    width: 11px;
+    height: 11px;
+    right: 4px;
+    top: 7px;
+  }
+}
+
+.about-me__portfolio-link {
+  text-decoration: none;
+  color: #fff;
+  font-family: Inter, sans-serif;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 50px;
+  letter-spacing: -1.2px;
+  cursor: pointer;
+  display: block;
+  width: 100%;
+}
+
+@media screen and (max-width: 1279px) {
+  .about-me__portfolio-link {
+    font-size: 28px;
+    line-height: 50px;
+    letter-spacing: -1.12px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .about-me__portfolio-link {
+    font-size: 18px;
+    line-height: 28px;
+    letter-spacing: -0.72px;
+  }
+}
