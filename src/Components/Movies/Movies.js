@@ -50,7 +50,7 @@ export default function Movies() {
     setIsShortFilm(previousFilterValue);
   }, []);
 
-  const handleFilmSearch = () => {
+  const handleFilmSearch = (toggledFilter = false) => {
     if (!searchValue) {
       setErrorMessage('Нужно ввести ключевое слово');
       return;
@@ -64,11 +64,13 @@ export default function Movies() {
           setMovieList(movieList);
           setSearchedList(searchMovies(movieList, searchValue));
           setSearchMessage('');
+          toggledFilter && setIsShortFilm((prev) => !prev);
         })
         .catch((err) => setSearchMessage(err.message))
         .finally(() => setIsLoading(false));
     } else {
       setSearchedList(searchMovies(movieList, searchValue));
+      toggledFilter && setIsShortFilm((prev) => !prev);
     }
   };
 
@@ -91,9 +93,7 @@ export default function Movies() {
         searchValue={searchValue}
         onSearch={(e) => setSearchValue(e.target.value)}
         filterValue={isShortFilm}
-        onFilter={() => {
-          setIsShortFilm((prev) => !prev);
-        }}
+        onFilter={() => handleFilmSearch(true)}
         errorMessage={errorMessage}
       ></SearchForm>
       {Boolean(filteredList.length) && (

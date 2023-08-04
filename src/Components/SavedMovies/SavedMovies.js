@@ -37,13 +37,14 @@ export default function SavedMovies() {
     setFilteredList(filterMovies(searchedList, isShortFilm));
   }, [isShortFilm, searchedList]);
 
-  const handleFilmSearch = () => {
+  const handleFilmSearch = (toggledFilter = false) => {
     if (!searchValue) {
       setErrorMessage('Нужно ввести ключевое слово');
       return;
     }
     setErrorMessage('');
     setSearchedList(searchMovies(savedList, searchValue));
+    toggledFilter && setIsShortFilm((prev) => !prev);
   };
 
   const handleDeleteMovie = (movieId) => {
@@ -65,7 +66,7 @@ export default function SavedMovies() {
         onSearch={(e) => setSearchValue(e.target.value)}
         filterValue={isShortFilm}
         onFilter={() => {
-          setIsShortFilm((prev) => !prev);
+          handleFilmSearch(true);
         }}
         errorMessage={errorMessage}
       ></SearchForm>
