@@ -1,7 +1,3 @@
-const moviesToRender = {
-  
-}
-
 export const calcMoviesToRender = () => {
   let moviesToRender;
   const windowWidth = document.documentElement.clientWidth;

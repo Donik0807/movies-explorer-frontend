@@ -6,6 +6,7 @@ import useFormIsValid from '../../hooks/useFormIsValid';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import { updateProfile } from '../../utils/MainApi';
 import { useNavigate } from 'react-router-dom';
+import Popup from '../Popup/Popup';
 
 export default function Profile() {
   const [currentUser, setCurrentUser] = React.useContext(CurrentUserContext);
@@ -33,6 +34,7 @@ export default function Profile() {
   });
   const [formIsValid, setFormIsValid] = useFormIsValid([nameError, emailError]);
   const [submitError, setSubmitError] = React.useState('');
+  const [popupIsOpen, setPopupIsOpen] = React.useState(false);
 
   React.useEffect(() => {
     if (
@@ -45,11 +47,35 @@ export default function Profile() {
     }
   }, [inputData, currentUser]);
 
+  React.useEffect(() => {
+    function closeByEscape(evt) {
+      if (evt.key === "Escape" ) {
+        setPopupIsOpen(false);
+      }
+    }
+
+    function closeByClick(evt) {
+      if (!evt.target.closest('.popup__container')) {
+        setPopupIsOpen(false)
+      }
+    }
+
+    if (popupIsOpen) {
+      document.addEventListener("keydown", closeByEscape);
+      document.addEventListener("click", closeByClick);
+      return () => {
+        document.removeEventListener("keydown", closeByEscape);
+        document.removeEventListener("click", closeByClick);
+      };
+    }
+  }, [popupIsOpen])
+
   const handleUserUpdate = (e) => {
     e.preventDefault();
     updateProfile(inputData)
       .then((updatedData) => {
         setCurrentUser(updatedData);
+        setPopupIsOpen(true)
       })
       .catch((errorMessage) => {
         setSubmitError(errorMessage);
@@ -130,6 +156,9 @@ export default function Profile() {
       >
         Выйти из аккаунта
       </button>
+      <Popup isOpen={popupIsOpen} onClose={() => setPopupIsOpen(false)}>
+        <p className='popup__text'>Профиль успешно отредактирован!</p>
+      </Popup>
     </section>
   );
 }
