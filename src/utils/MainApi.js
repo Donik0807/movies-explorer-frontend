@@ -1,7 +1,7 @@
 import { movieBaseUrl } from './MovieApi';
 
-const baseUrl = 'https://api.movie-explorer.nomoredomains.work';
-// const baseUrl = 'http://localhost:3000';
+// const baseUrl = 'https://api.movie-explorer.nomoredomains.work';
+const baseUrl = 'http://localhost:3000';
 
 const handleResponse = (res) => {
   let failedResponse;

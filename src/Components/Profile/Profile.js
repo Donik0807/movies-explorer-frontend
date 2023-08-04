@@ -43,7 +43,7 @@ export default function Profile() {
     } else {
       setFormIsValid(true);
     }
-  }, [inputData]);
+  }, [inputData, currentUser]);
 
   const handleUserUpdate = (e) => {
     e.preventDefault();
