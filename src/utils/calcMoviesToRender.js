@@ -1,16 +1,24 @@
+const moviesToRender = {
+  
+}
+
 export const calcMoviesToRender = () => {
   let moviesToRender;
-  const windowWindth = document.documentElement.clientWidth;
+  const windowWidth = document.documentElement.clientWidth;
 
-  if (windowWindth >= 1280) {
+  if (windowWidth >= 1230) {
     moviesToRender = 16;
   }
 
-  if (windowWindth < 1280) {
+  if (windowWidth < 1230 && windowWidth >= 930) {
+    moviesToRender = 12;
+  }
+
+  if (windowWidth < 930 && windowWidth >= 590) {
     moviesToRender = 8;
   }
 
-  if (windowWindth < 767) {
+  if (windowWidth < 590) {
     moviesToRender = 5;
   }
 

@@ -1,16 +1,20 @@
 export const calcMoreToLoad = () => {
   let moreAmount;
-  const windowWindth = document.documentElement.clientWidth;
+  const windowWidth = document.documentElement.clientWidth;
 
-  if (windowWindth >= 1280) {
+  if (windowWidth >= 1230) {
     moreAmount = 4;
   }
 
-  if (windowWindth < 1280) {
+  if (windowWidth < 1230 && windowWidth >= 930) {
+    moreAmount = 3;
+  }
+
+  if (windowWidth < 930 && windowWidth >= 590) {
     moreAmount = 2;
   }
 
-  if (windowWindth < 767) {
+  if (windowWidth < 590) {
     moreAmount = 2;
   }
 
