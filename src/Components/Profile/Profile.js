@@ -3,14 +3,17 @@ import './Profile.css';
 import { useForm } from '../../hooks/useForm';
 import { useValidation } from '../../hooks/useValidation';
 import useFormIsValid from '../../hooks/useFormIsValid';
+import { CurrentUserContext } from '../../contexts/CurrentUserContext';
+import { updateProfile } from '../../utils/MainApi';
+import { useNavigate } from 'react-router-dom';
 
-export default function Profile({
-  user,
-  onSubmit = () => {
-    return;
-  },
-}) {
-  const { inputData, handleChange } = useForm(user);
+export default function Profile() {
+  const [currentUser, setCurrentUser] = React.useContext(CurrentUserContext);
+  const navigate = useNavigate();
+  const { inputData, handleChange } = useForm({
+    name: currentUser.name,
+    email: currentUser.email,
+  });
   const {
     errorMessage: nameError,
     inputIsDirty: nameIsDirty,
@@ -28,17 +31,46 @@ export default function Profile({
     required: true,
     email: true,
   });
-  const [formIsValid] = useFormIsValid([nameError, emailError]);
+  const [formIsValid, setFormIsValid] = useFormIsValid([nameError, emailError]);
+  const [submitError, setSubmitError] = React.useState('');
 
-  const handleSubmit = (e) => {
-    e.preventEventDefault();
-    onSubmit();
+  React.useEffect(() => {
+    if (
+      inputData.name === currentUser.name &&
+      inputData.email === currentUser.email
+    ) {
+      setFormIsValid(false);
+    } else {
+      setFormIsValid(true);
+    }
+  }, [inputData]);
+
+  const handleUserUpdate = (e) => {
+    e.preventDefault();
+    updateProfile(inputData)
+      .then((updatedData) => {
+        setCurrentUser(updatedData);
+      })
+      .catch((errorMessage) => {
+        setSubmitError(errorMessage);
+      });
+  };
+
+  const onSignOut = () => {
+    if (localStorage.getItem('jwt')) {
+      localStorage.removeItem('jwt');
+      localStorage.removeItem('movieList');
+      localStorage.removeItem('searchValue');
+      localStorage.removeItem('isShortFilm');
+      setCurrentUser(null);
+      navigate('/');
+    }
   };
 
   return (
     <section className='profile'>
-      <h1 className='profile__title'>Привет, {user.name}!</h1>
-      <form className='profile__form' onSubmit={handleSubmit}>
+      <h1 className='profile__title'>Привет, {currentUser.name}!</h1>
+      <form className='profile__form' onSubmit={handleUserUpdate}>
         <fieldset className='profile__input-container'>
           <label className='profile__label'>
             <span className='profile__input-text'>Имя</span>
@@ -51,7 +83,7 @@ export default function Profile({
                 setNameIsDirty(true);
               }}
               className={`profile__text-input ${
-                nameError && nameIsDirty &&  'profile__text-input_invalid'
+                nameError && nameIsDirty && 'profile__text-input_invalid'
               }`}
               placeholder='Имя'
             ></input>
@@ -81,6 +113,9 @@ export default function Profile({
             )}
           </label>
         </fieldset>
+        {submitError && (
+          <span className='profile__submit-error'>{submitError}</span>
+        )}
         <button
           disabled={!formIsValid}
           type='submit'
@@ -89,7 +124,12 @@ export default function Profile({
           Редактировать
         </button>
       </form>
-      <button className='profile__logout-btn button-animation'>Выйти из аккаунта</button>
+      <button
+        onClick={onSignOut}
+        className='profile__logout-btn button-animation'
+      >
+        Выйти из аккаунта
+      </button>
     </section>
   );
 }

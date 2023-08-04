@@ -10,7 +10,7 @@ export const useValidation = (value, validations) => {
       switch (validation) {
         case 'minLength': {
           const minLength = validations[validation];
-          if (value.length < minLength) {
+          if (value?.length < minLength) {
             setErrorMessage(`Длина текста не должна быть меньше ${minLength} символов`)
             return; 
           } else setErrorMessage('');
@@ -18,14 +18,14 @@ export const useValidation = (value, validations) => {
         }
         case 'maxLength': {
           const maxLength = validations[validation];
-          if (value.length > maxLength) {
+          if (value?.length > maxLength) {
             setErrorMessage(`Длина текста не должна быть больше ${maxLength} символов`)
             return; 
           } else setErrorMessage('');
           break;
         }
         case 'required': {
-          if (value.length === 0) {
+          if (value?.length === 0) {
             setErrorMessage('Заполните это поле');
             return;
           } else setErrorMessage('');

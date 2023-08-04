@@ -2,17 +2,20 @@
   margin-bottom: 5px;
   width: 100%;
   overflow: hidden;
+  height: 151px;
 }
 
 @media screen and (max-width: 1279px) {
   .movie__image {
     margin-bottom: 10px;
+    height: 190px;
   }
 }
 
 @media screen and (max-width: 767px) {
   .movie__image {
     margin-bottom: 5px;
+    height: 168px;
   }
 }
 

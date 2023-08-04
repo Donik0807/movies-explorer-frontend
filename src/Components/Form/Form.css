@@ -2,6 +2,7 @@
   min-height: 381px;
   display: flex;
   flex-direction: column;
+  position: relative;
 }
 
 @media screen and (max-width: 767px) {
@@ -45,11 +46,25 @@
 }
 
 .form__submit-btn:disabled {
-  background-color: #F8F8F8;
+  background-color: #f8f8f8;
   cursor: unset;
-  color: #C2C2C2;
+  color: #c2c2c2;
 }
 
 .form__submit-btn:disabled:hover {
   opacity: 1;
+}
+
+.form__api-error {
+  position: absolute;
+  bottom: 67px;
+  display: block;
+  width: 100%;
+  color: #ff004c;
+  text-align: center;
+  font-family: Inter, sans-serif;
+  font-size: 11px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
 }

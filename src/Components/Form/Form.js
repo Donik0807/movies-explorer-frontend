@@ -7,10 +7,11 @@ export default function Form({
     return;
   },
   submitText,
-  formIsValid
+  formIsValid,
+  apiMessage
 }) {
   const handleSubmit = (e) => {
-    e.preventEventDefault();
+    e.preventDefault();
     onSubmit();
   };
   return (
@@ -18,6 +19,7 @@ export default function Form({
       <fieldset className='form__container'>
         {children}
       </fieldset>
+      {apiMessage && <span className='form__api-error'>{apiMessage}</span>}
       <button disabled={!formIsValid} type='submit' className='form__submit-btn button-animation'>{submitText}</button>
     </form>
   );
