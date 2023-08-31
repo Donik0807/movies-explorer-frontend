@@ -4,6 +4,9 @@ import { useValidation } from '../../hooks/useValidation';
 import PageWithForm from '../PageWithForm/PageWithForm';
 import useFormIsValid from '../../hooks/useFormIsValid';
 import Input from '../Input/Input';
+import { CurrentUserContext } from '../../contexts/CurrentUserContext';
+import { useNavigate } from 'react-router-dom';
+import { getUserData, login } from '../../utils/MainApi';
 
 const initialState = {
   email: '',
@@ -11,7 +14,7 @@ const initialState = {
 };
 
 export default function Login() {
-  const { inputData, handleChange } = useForm(initialState);
+  const { inputData, handleChange, setInputData } = useForm(initialState);
   const {
     errorMessage: emailError,
     inputIsDirty: emailIsDirty,
@@ -27,7 +30,30 @@ export default function Login() {
   } = useValidation(inputData.password, {
     required: true,
   });
-  const [formIsValid] = useFormIsValid([emailError, passwordError]);
+  const [formIsValid, setFormIsValid] = useFormIsValid([emailError, passwordError]);
+
+  const [submitError, setSubmitError] = React.useState('');
+  const [currentUser, setCurrentUser] = React.useContext(CurrentUserContext);
+  const navigate = useNavigate();
+
+  if (currentUser) {
+    navigate('/');
+  }
+
+  const handleLogin = () => {
+    login(inputData)
+      .then(() => getUserData())
+      .then(userData => {
+        if (userData) {
+          setCurrentUser(userData)
+          navigate('/movies')
+          setInputData(initialState);
+        }
+      })
+      .catch((apiMessage) => {
+        setSubmitError(apiMessage);
+      });
+  };
 
   return (
     <PageWithForm
@@ -37,6 +63,8 @@ export default function Login() {
       submitText='Войти'
       formIsValid={formIsValid}
       href={"/signup"}
+      onSubmit={handleLogin}
+      apiMessage={submitError}
     >
       <Input
         errorMessage={emailError}

@@ -6,12 +6,14 @@ export default function SearchForm({
   onSubmit = () => {
     return;
   },
+  searchValue,
+  onSearch,
+  filterValue, 
+  onFilter,
+  errorMessage,
 }) {
-  const [searchValue, setSearchValue] = React.useState('');
-  const [isShortFilm, setIsShortFilm] = React.useState(true);
-
   const handleSubmit = (e) => {
-    e.preventEventDefault();
+    e.preventDefault();
     onSubmit();
   };
 
@@ -23,15 +25,16 @@ export default function SearchForm({
             name='search'
             type='text'
             value={searchValue}
-            onChange={(e) => setSearchValue(e.target.value)}
+            onChange={onSearch}
             className='search__input'
             placeholder='Фильм'
           />
           <button className='search__button button-animation'></button>
+          {errorMessage && <span className='search__error-message'>{errorMessage}</span>}
         </div>
         <FilterCheckBox
-          isChecked={isShortFilm}
-          onChecked={() => setIsShortFilm((prev) => !prev)}
+          isChecked={filterValue}
+          onChecked={onFilter}
         ></FilterCheckBox>
       </form>
     </section>

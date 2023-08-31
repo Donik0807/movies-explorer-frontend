@@ -12,14 +12,21 @@ export default function PageWithForm({
   submitText,
   formIsValid,
   href,
+  onSubmit,
+  apiMessage,
 }) {
   return (
     <section className='page-form'>
-      <Link to="/">
+      <Link to='/'>
         <img src={logo} className='page-form__logo' alt='логотип'></img>
       </Link>
       <h1 className='page-form__title'>{title}</h1>
-      <Form formIsValid={formIsValid} submitText={submitText}>
+      <Form
+        onSubmit={onSubmit}
+        formIsValid={formIsValid}
+        submitText={submitText}
+        apiMessage={apiMessage}
+      >
         {children}
       </Form>
       <p className='page-form__redirect'>

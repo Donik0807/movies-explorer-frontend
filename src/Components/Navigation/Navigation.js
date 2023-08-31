@@ -1,23 +1,25 @@
 import React from 'react';
 import './Navigation.css';
 import { Link, NavLink } from 'react-router-dom';
+import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 
-export default function Navigation({ loggedIn = true }) {
+export default function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
   const toggleMenu = () => setIsMenuOpen((prev) => !prev);
+  const [currentUser] = React.useContext(CurrentUserContext);
   return (
     <>
       <nav
         className={`header__navigation ${
-          loggedIn ? 'header__navigation_burger' : ''
+          currentUser ? 'header__navigation_burger' : ''
         } ${isMenuOpen ? 'header__navigation_open' : ''}`}
       >
         <ul
           className={`header__navigation-list ${
-            loggedIn ? 'header__navigation-list_burger' : ''
+            currentUser ? 'header__navigation-list_burger' : ''
           }`}
         >
-          {loggedIn ? (
+          {currentUser ? (
             <>
               <li className='header__navigation-item' onClick={toggleMenu}>
                 <NavLink
@@ -74,7 +76,7 @@ export default function Navigation({ loggedIn = true }) {
           )}
         </ul>
       </nav>
-      {loggedIn && (
+      {currentUser && (
         <button
           onClick={toggleMenu}
           className={`header__toggle-btn ${

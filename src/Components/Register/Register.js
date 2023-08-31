@@ -4,6 +4,9 @@ import { useForm } from '../../hooks/useForm';
 import { useValidation } from '../../hooks/useValidation';
 import Input from '../Input/Input';
 import useFormIsValid from '../../hooks/useFormIsValid';
+import { getUserData, login, register } from '../../utils/MainApi';
+import { CurrentUserContext } from '../../contexts/CurrentUserContext';
+import { useNavigate } from 'react-router-dom';
 
 const initialState = {
   name: '',
@@ -12,7 +15,7 @@ const initialState = {
 };
 
 export default function Register() {
-  const { inputData, handleChange } = useForm(initialState);
+  const { inputData, handleChange, setInputData } = useForm(initialState);
   const {
     errorMessage: nameError,
     inputIsDirty: nameIsDirty,
@@ -37,7 +40,32 @@ export default function Register() {
   } = useValidation(inputData.password, {
     required: true,
   });
-  const [formIsValid] = useFormIsValid([nameError, emailError, passwordError]);
+  const [formIsValid] = useFormIsValid([
+    nameError,
+    emailError,
+    passwordError,
+  ]);
+
+  const [submitError, setSubmitError] = React.useState('');
+  const [currentUser, setCurrentUser] = React.useContext(CurrentUserContext);
+  const navigate = useNavigate();
+
+  if (currentUser) {
+    navigate('/');
+  }
+
+  const handleRegister = () => {
+    register(inputData)
+      .then(() => login(inputData))
+      .then(() => {
+        setCurrentUser(inputData);
+        navigate('/movies');
+        setInputData(initialState);
+      })
+      .catch((apiMessage) => {
+        setSubmitError(apiMessage);
+      });
+  };
 
   return (
     <PageWithForm
@@ -46,7 +74,9 @@ export default function Register() {
       linkText='Войти'
       submitText='Зарегистрироваться'
       formIsValid={formIsValid}
-      href={"/signin"}
+      href={'/signin'}
+      onSubmit={handleRegister}
+      apiMessage={submitError}
     >
       <Input
         errorMessage={nameError}
